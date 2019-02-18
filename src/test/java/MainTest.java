@@ -3,13 +3,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import io.restassured.RestAssured.*;
-import io.restassured.matcher.RestAssuredMatchers.* ;
+import io.restassured.matcher.RestAssuredMatchers.*;
 import org.hamcrest.Matchers.*;
 
 import io.restassured.module.jsv.JsonSchemaValidator.*;
 
+import static io.restassured.RestAssured.given;
 import static org.junit.Assert.*;
-
 
 
 public class MainTest
@@ -28,12 +28,22 @@ public class MainTest
     @Test
     public void main()
     {
-        assertEquals(1,1);
+        assertEquals(1, 1);
     }
 
+    //@formatter:off
+    //@formatter:on
+
     @Test
-    public void test1()
+    public void test_StatusCodeShouldBe200()
     {
-        assertEquals(1,1);
+        //@formatter:off
+        given().
+                when().
+                    get("http://ergast.com/api/f1/2017/circuits.json").
+                then().
+                    assertThat().
+                        statusCode(200);
+        //@formatter:on
     }
 }
