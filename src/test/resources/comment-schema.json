@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/product.schema.json",
+  "title": "Comment",
+  "description": "A comment on the post",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The unique identifier for a comment",
+      "type": "integer"
+    },
+    "body": {
+      "description": "The body content of the comment",
+      "type": "string"
+    },
+    "postId": {
+      "description": "The id of the post this comment was put under",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id", "body", "postId"
+  ]
+}
