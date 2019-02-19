@@ -10,6 +10,13 @@ public class Comment
         this.postId = postId;
     }
 
+    public Comment(int id, String body, int postId)
+    {
+        this.id = id;
+        this.body = body;
+        this.postId = postId;
+    }
+
     @Override
     public String toString()
     {

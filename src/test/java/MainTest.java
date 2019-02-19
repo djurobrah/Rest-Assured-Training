@@ -1,4 +1,5 @@
 import io.restassured.http.ContentType;
+import org.hamcrest.Matchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -76,6 +77,24 @@ public class MainTest
                     statusCode(201).
                     and().
                     body(matchesJsonSchemaInClasspath("comment-schema.json"));
+        //@formatter:on
+    }
+
+    @Test
+    public void test_deleteComment()
+    {
+        Comment comment = new Comment(3,"Telo komentara!", 5);
+        //@formatter:off
+        given().
+                pathParam("commentId", comment.getId()).
+        when().
+                delete("http://localhost:3000/comments/{commentId}").
+        then().
+                assertThat().
+                    statusCode(200).
+                    and().
+                    body("isEmpty()", Matchers.is(true)).
+                    log().all();
         //@formatter:on
     }
 }
